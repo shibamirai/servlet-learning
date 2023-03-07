@@ -1,8 +1,8 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,14 +28,9 @@ public class IndexServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		out.println("!<DOCTYPE html>");
-		out.println("<html lang=\"ja\">");
-		out.println("<head></head>");
-		out.println("<body>");
-		out.println("  <h1>Hello Servlet</h1>");
-		out.println("</body>");
+		request.setAttribute("name", "未来のかたち");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }
