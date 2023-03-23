@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -13,7 +14,7 @@
   <div class="d-flex align-items-center justify-content-center" style="height: 100vh">
     <form>
       <div class="fs-1">
-        3 x 8 = <input type="number" autofocus>
+        ${x} x ${y} = <input type="number" autofocus>
       </div>
     </form>
   </div>
