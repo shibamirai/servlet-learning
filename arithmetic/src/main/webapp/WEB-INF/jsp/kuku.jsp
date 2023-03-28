@@ -12,9 +12,12 @@
 </head>
 <body>
   <div class="d-flex align-items-center justify-content-center" style="height: 100vh">
-    <form>
+    <form action="/arithmetic/kuku" method="post">
+      <input type="hidden" name="x" value="${x}">
+      <input type="hidden" name="y" value="${y}">
+
       <div class="fs-1">
-        ${x} x ${y} = <input type="number" autofocus>
+        ${x} x ${y} = <input type="number" name="z" autofocus>
       </div>
     </form>
   </div>

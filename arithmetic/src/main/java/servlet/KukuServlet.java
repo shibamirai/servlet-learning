@@ -23,4 +23,31 @@ public class KukuServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*
+		 * パラメータ x, y, z を受け取り、数値に変換する。
+		 * 
+		 * 本来は、まず受信するパラメータすべてに対して、値が正しいかどうかを
+		 * 確認（バリデーション）しなければならないが、ここでは省略している。
+		 */
+		int x = Integer.parseInt(request.getParameter("x"));
+		int y = Integer.parseInt(request.getParameter("y"));
+		int z = Integer.parseInt(request.getParameter("z"));
+
+		if (x * y == z) {
+
+			// 正解なので次の問題へ
+			response.sendRedirect("/arithmetic/kuku");
+
+		} else {
+
+			// 不正解なので同じ問題を表示
+			request.setAttribute("x", x);
+			request.setAttribute("y", y);
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/kuku.jsp");
+			dispatcher.forward(request, response);
+
+		}
+	}
 }
