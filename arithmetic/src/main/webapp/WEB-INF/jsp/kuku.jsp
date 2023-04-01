@@ -17,6 +17,7 @@
       <input type="hidden" name="y" value="${y}">
 
       <div class="fs-1">
+        <h1>第 ${count} 問</h1>
       	<% if (request.getAttribute("wrong") != null) { %>
           <span class="text-danger">x</span>
         <% } %>
