@@ -44,6 +44,7 @@ public class KukuServlet extends HttpServlet {
 			// 不正解なので同じ問題を表示
 			request.setAttribute("x", x);
 			request.setAttribute("y", y);
+			request.setAttribute("wrong", "wrong");
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/kuku.jsp");
 			dispatcher.forward(request, response);

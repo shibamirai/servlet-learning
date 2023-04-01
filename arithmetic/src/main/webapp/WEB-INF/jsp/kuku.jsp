@@ -17,6 +17,9 @@
       <input type="hidden" name="y" value="${y}">
 
       <div class="fs-1">
+      	<% if (request.getAttribute("wrong") != null) { %>
+          <span class="text-danger">x</span>
+        <% } %>
         ${x} x ${y} = <input type="number" name="z" autofocus>
       </div>
     </form>
