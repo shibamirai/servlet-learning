@@ -17,7 +17,12 @@ public class KukuServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		session.setAttribute("count", Integer.valueOf(1));
+		Integer count = (Integer)session.getAttribute("count");
+		if (count == null) {
+			session.setAttribute("count", Integer.valueOf(1));
+		} else {
+			session.setAttribute("count", count + 1);
+		}
 
 		Random rnd = new Random();
 		request.setAttribute("x", rnd.nextInt(1, 10));
