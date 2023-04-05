@@ -19,7 +19,32 @@ public class KukuServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Integer count = (Integer)session.getAttribute("count");
 		if (count == null) {
+
 			session.setAttribute("count", Integer.valueOf(1));
+			session.setAttribute("start", Long.valueOf(System.currentTimeMillis()));
+
+		} else if (count.intValue() == 10) {
+
+			// 終了時刻を取得
+			Long end = System.currentTimeMillis();
+			
+			// 開始時刻を取得（これも本来はバリデーションすべき）
+			Long start = (Long)session.getAttribute("start");
+			
+			// 単位を"秒"にする。double 型として割り算をしないと小数点以下がクリアされてしまうので注意
+			double time = (end - start) / (double)1000;
+			request.setAttribute("time", Double.valueOf(time));
+
+			// 次の問題にそなえて今のセッションを終了し、セッション属性をクリアしておく
+			session.invalidate();
+
+			// 結果ページへフォワード
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+			dispatcher.forward(request, response);
+			
+			// ここで処理を終了させるのを忘れない
+			return;
+
 		} else {
 			session.setAttribute("count", count + 1);
 		}
