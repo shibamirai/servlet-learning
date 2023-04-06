@@ -18,7 +18,7 @@
 
       <div class="fs-1">
       	<% if (request.getAttribute("wrong") != null) { %>
-          <span class="text-danger">x</span>
+          <span class="text-danger">不正解</span>
         <% } %>
         ${x} x ${y} = <input type="number" name="z" autofocus>
       </div>
